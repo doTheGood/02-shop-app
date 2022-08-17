@@ -8,7 +8,7 @@ export function AppRouter() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/complete" element={<CompleteOrderPage />} />
+        <Route path="/completeOrder" element={<CompleteOrderPage />} />
       </Route>
     </Routes>
   );

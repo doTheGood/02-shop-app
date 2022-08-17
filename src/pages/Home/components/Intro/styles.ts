@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import introBackgroundImg from "../../../../assets/intro-background.png";
 import { rgba } from "polished";
-import { TitleText } from "../../../../Components/Typography";
+import { TitleText } from "../../../../components/Typography";
 import { Student } from "phosphor-react";
 
 export const IntroContainer = styled.section`

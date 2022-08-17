@@ -27,5 +27,5 @@ export const RegularText = styled.h1<RegularTextProps>`
     theme.textSizes[`text-regular-${size ?? "m"}`]};
   font-family: ${({ theme }) => theme.fonts.regular};
   line-height: 130%;
-  font-weight: ${({ weight }) => weight ?? 800};
+  font-weight: ${({ weight }) => weight ?? 400};
 `;
