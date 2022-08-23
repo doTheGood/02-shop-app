@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 import { CompleteOrderPage } from "./pages/CompleteOrder";
 import { HomePage } from "./pages/Home";
-import { OrderConfirmed } from "./pages/OrderConfirmed";
+import { OrderConfirmedPage } from "./pages/OrderConfirmed";
 
 export function AppRouter() {
   return (
@@ -10,7 +10,7 @@ export function AppRouter() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/completeOrder" element={<CompleteOrderPage />} />
-        <Route path="/orderConfirmed" element={<OrderConfirmed />} />
+        <Route path="/orderConfirmed" element={<OrderConfirmedPage />} />
       </Route>
     </Routes>
   );

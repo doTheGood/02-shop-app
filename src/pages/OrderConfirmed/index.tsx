@@ -4,10 +4,29 @@ import confirmedOrderIllustration from "../../assets/confirmed-order.svg";
 import { useTheme } from "styled-components";
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { Clock, CurrencyDollar, MapPin } from "phosphor-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { OrderData } from "../CompleteOrder";
+import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions";
+import { useEffect } from "react";
 
-export function OrderConfirmed() {
+interface LocationType {
+  state: OrderData;
+}
 
+export function OrderConfirmedPage() {
   const { colors } = useTheme();
+
+  const { state } = useLocation() as unknown as LocationType;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      navigate("/");
+    }
+  }, []);
+
+  if (!state) return <>...</>;
 
   return (
     <OrderConfirmedContainer className="container">
@@ -24,9 +43,12 @@ export function OrderConfirmed() {
             iconBg={colors["brand-purple"]}
             text={
               <RegularText>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{" "}
+                <strong>
+                  {state.street}, {state.number}{" "}
+                </strong>
                 <br />
-                Farrapos - Porto Alegre, RS
+                {state.district} - {state.city}, {state.uf}
               </RegularText>
             }
           />
@@ -46,16 +68,15 @@ export function OrderConfirmed() {
             iconBg={colors["brand-yellow-dark"]}
             text={
               <RegularText>
-                Pagamento na Entraga
+                Pagamento na Entrega
                 <br />
-                <strong>Cartão de crédito</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
           />
         </OrderDetailsContainer>
         <img src={confirmedOrderIllustration} />
       </section>
-
     </OrderConfirmedContainer>
   );
 }
